@@ -45,12 +45,6 @@ startBtn.addEventListener("click", function(){
         return newCell;
     }
 
-    function handleCellClick() {
-        const clickedNumber = parseInt(this.innerHTML);
-        console.log(clickedNumber);
-        this.classList.add("blue");
-    }
-
     function getRandomNumber(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
       }
@@ -63,6 +57,16 @@ startBtn.addEventListener("click", function(){
                 result.push(rndNum);
             }
         } console.log(result);
+        return result;
+    }
+
+    function handleCellClick() {
+        const clickedNumber = parseInt(this.innerHTML);
+        console.log(clickedNumber);
+        if (bombs.includes(clickedNumber)){
+            this.classList.add("red");
+        } else{this.classList.add("blue");}
+        
     }
 })
 

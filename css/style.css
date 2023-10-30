@@ -45,6 +45,10 @@
     background-color: blue;
 }
 
+.red{
+    background-color: red;
+}
+
 .disappear{
     display: none;
 }
