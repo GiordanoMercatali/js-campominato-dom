@@ -83,6 +83,7 @@ startBtn.addEventListener("click", function(){
                 this.classList.add("blue");
                 remainingClicks -= 1;
                 score += 1;
+                this.removeEventListener("click", handleCellClick);
                 console.log("Remaining clicks:" + remainingClicks);
             }
         } else if (remainingClicks === 0) {
