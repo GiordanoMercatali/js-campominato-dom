@@ -20,13 +20,19 @@ startBtn.addEventListener("click", function(){
     } else if (difficulty === "medium"){
         gridSize = 81;
         cellSize = 9;
-    }else{
+    } else{
         gridSize = 49;
         cellSize = 7;
     }
 
     const bombs = generateBombs(gridSize);
     console.log(bombs);
+
+    const maxClicks = gridSize - bombs.length;
+    console.log(maxClicks);
+
+    let remainingClicks = maxClicks;
+    console.log(remainingClicks);
     
     for (let i = 0; i < gridSize; i++){
         numberArray[i] = i + 1;
@@ -63,10 +69,19 @@ startBtn.addEventListener("click", function(){
     function handleCellClick() {
         const clickedNumber = parseInt(this.innerHTML);
         console.log(clickedNumber);
-        if (bombs.includes(clickedNumber)){
-            this.classList.add("red");
-            window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley");
-        } else{this.classList.add("blue");}
+        if (remainingClicks > 0){
+            if (bombs.includes(clickedNumber)){
+                this.classList.add("red");
+                window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley");
+                console.log("You Lose");
+            } else {
+                this.classList.add("blue");
+                remainingClicks -= 1;
+                console.log("Remaining clicks:" + remainingClicks);
+            }
+        } else if (remainingClicks === 0) {
+            console.log("You Win");
+        }
         
     }
 })
