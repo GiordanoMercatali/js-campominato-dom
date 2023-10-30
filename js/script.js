@@ -1,6 +1,5 @@
 const startBtn = document.getElementById("start");
 const difficultyElem = document.getElementById("difficulty");
-console.log(difficultyElem);
 
 startBtn.addEventListener("click", function(){
 
@@ -25,7 +24,9 @@ startBtn.addEventListener("click", function(){
         gridSize = 49;
         cellSize = 7;
     }
-    console.log(gridSize);
+
+    const bombs = generateBombs(gridSize);
+    console.log(bombs);
     
     for (let i = 0; i < gridSize; i++){
         numberArray[i] = i + 1;
@@ -48,6 +49,20 @@ startBtn.addEventListener("click", function(){
         const clickedNumber = parseInt(this.innerHTML);
         console.log(clickedNumber);
         this.classList.add("blue");
+    }
+
+    function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+
+    function generateBombs(max){
+        const result = [];
+        while (result.length < 16){
+            const rndNum = getRandomNumber(1, max);
+            if(!result.includes(rndNum)){
+                result.push(rndNum);
+            }
+        } console.log(result);
     }
 })
 
