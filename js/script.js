@@ -1,5 +1,9 @@
 const startBtn = document.getElementById("start");
 const difficultyElem = document.getElementById("difficulty");
+const resultElem = document.getElementById("result");
+
+let gameOver = false;
+let score = 0;
 
 startBtn.addEventListener("click", function(){
 
@@ -67,22 +71,25 @@ startBtn.addEventListener("click", function(){
     }
 
     function handleCellClick() {
-        const clickedNumber = parseInt(this.innerHTML);
-        console.log(clickedNumber);
-        if (remainingClicks > 0){
+        if (remainingClicks > 0 && gameOver === false){
+            const clickedNumber = parseInt(this.innerHTML);
+            console.log(clickedNumber);
             if (bombs.includes(clickedNumber)){
                 this.classList.add("red");
-                window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley");
-                console.log("You Lose");
+                // window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley");
+                resultElem.innerHTML = `You lose. Your score: ${score}`;
+                gameOver = true;
             } else {
                 this.classList.add("blue");
                 remainingClicks -= 1;
+                score += 1;
                 console.log("Remaining clicks:" + remainingClicks);
             }
         } else if (remainingClicks === 0) {
-            console.log("You Win");
+            resultElem.innerHTML = `You win. Your score: ${score}`;
+            gameOver = true;
         }
-        
+        return score;
     }
 })
 
