@@ -1,0 +1,50 @@
+/*Custom properties*/
+:root{
+    --font-color: black;
+    --border: 1px solid black;
+}
+
+/*Reset*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--font-color);
+}
+
+/* GRID */
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 600px;
+    height: 600px;
+}
+
+/* CELL */
+.cell{
+    /* width: calc(100% / 10); */
+    /* height: calc(100% / 10); */
+    border: var(--border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell.small{
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.cell.big{
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+
+.blue{
+    background-color: blue;
+}
+
+.disappear{
+    display: none;
+}
