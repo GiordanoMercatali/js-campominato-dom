@@ -65,6 +65,7 @@ startBtn.addEventListener("click", function(){
         console.log(clickedNumber);
         if (bombs.includes(clickedNumber)){
             this.classList.add("red");
+            window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley");
         } else{this.classList.add("blue");}
         
     }
